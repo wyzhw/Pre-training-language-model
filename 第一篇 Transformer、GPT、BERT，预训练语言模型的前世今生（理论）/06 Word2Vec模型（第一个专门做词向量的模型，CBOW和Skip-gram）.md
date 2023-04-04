@@ -58,7 +58,7 @@ Word2Vec --》 CBOW 和 Skip-gram 的两种架构的重点都是得到一个 Q �
 
 Q 矩阵的设计
 
-![image-20220614193540503](../../Library/Application Support/typora-user-images/image-20220614193540503.png)
+![image-20230405015745053](C:\Users\wyzhw\AppData\Roaming\Typora\typora-user-images\image-20230405015745053.png)
 
 00010 代表 apple × Q = 10，12，19
 

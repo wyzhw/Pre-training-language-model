@@ -25,9 +25,15 @@ elmo 解决多义词问题
 
 ![img](https://imgmd.oss-cn-shanghai.aliyuncs.com/BERT_IMG/word2vec.jpg)
 
+![img](https://imgmd.oss-cn-shanghai.aliyuncs.com/BERT_IMG/%E5%9F%BA%E4%BA%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9A%84emedding.jpg)从上面的架构图中可以看到, 宏观上ELMo分三个主要模块.
 
+- 最底层黄色标记的==Embedding==模块. $E_1$------词向量 $Qx_1$
+- 中间层蓝色标记的两部分==双层LSTM模块==.
+- 最上层绿色标记的==词向量==表征模块.
 
-![img](https://imgmd.oss-cn-shanghai.aliyuncs.com/BERT_IMG/%E5%9F%BA%E4%BA%8E%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9A%84emedding.jpg)
+Tips: 使用双层RNN是人为定义的。
+
+<img src="https://slideplayer.com/slide/17025344/98/images/6/Embeddings+from+Language+Model+%28ELMO%29.jpg" alt="img" style="zoom: 80%;" />
 
 ELMo（专门做词向量，通过预训练）
 
@@ -41,13 +47,11 @@ x1,x2, x4,x5 --> Word2Vec x1+x2+x4+x5 ---> 预测那一个词
 
 获取上下文信息后，把三层的信息进行一个叠加
 
-E1+E2+E3 = K1 一个新的词向量 $\approx$ E1
+E1+E2+E3 = K1 一个新的词向量 $\approx$ $T_1$
 
-E2,E3 相当于两个上下文信息
+E2,E3 相当于==两个==上下文信息
 
-E1+E2+E3+E4
-
-K1 包含了第一个词的词向量包含单词特征、句法特征、语义特征
+ $T_1$ 包含了第一个词的词向量包含单词特征、句法特征、语义特征
 
 
 
@@ -55,9 +59,9 @@ K1 包含了第一个词的词向量包含单词特征、句法特征、语义�
 
 E2，E3 不同，E1+E2+E3 不同
 
-apple --》 我吃了一个 苹果 -- 》 [1,20,10]
+apple --》 我吃了一个==苹果== -- 》 [1,20,10]
 
-apple --》我在用苹果手机 --》[1,10,20]
+apple --》我在用==苹果==手机 --》[1,10,20]
 
 ![img](https://imgmd.oss-cn-shanghai.aliyuncs.com/BERT_IMG/elmo%E8%AE%AD%E7%BB%83%E5%90%8E%E7%9A%84%E4%BD%BF%E7%94%A8.jpg)
 
